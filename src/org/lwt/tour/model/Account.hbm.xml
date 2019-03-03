@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping  package="org.lwt.tour.model">
+	<class name="Account" table="Account_info">
+  		<!-- 映射标识属性 -->
+        <id column="a_id" name="a_id" type="integer">
+   			 <!-- 指定使用identity主键生成策略 -->
+            <generator class="identity"/>
+        </id>
+ 		 <!-- 映射普通属性 -->
+ 		<property column="a_name" length="30" name="a_name" not-null="true" type="string"/>
+        <property column="password" length="30" name="password" not-null="true" type="string"/>
+        <set name="users" inverse="true" lazy="false" cascade="all">
+          <key column="account_id"></key>
+          <one-to-many class="User"/>
+        </set>
+        <set name="orders" inverse="true" lazy="false" cascade="all">
+          <key column="account_id"></key>
+          <one-to-many class="Order"/>
+        </set>
+	</class>
+</hibernate-mapping>

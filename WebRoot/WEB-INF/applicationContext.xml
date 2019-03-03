@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 指定Spring配置文件的Schema信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<!-- 定义数据源Bean，使用C3P0数据源实现 -->
+	<!-- 设置连接数据库的驱动、URL、用户名、密码
+		连接池最大连接数、最小连接数、初始连接数等参数 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close"
+		p:driverClass="com.mysql.jdbc.Driver"
+		p:jdbcUrl="jdbc:mysql://localhost:3306/tour"
+		p:user="root"
+		p:password="123456"
+		p:maxPoolSize="40"
+		p:minPoolSize="1"
+		p:initialPoolSize="1"
+		p:maxIdleTime="20"/>
+
+	<!-- 定义Hibernate的SessionFactory -->
+	<!-- 依赖注入数据源，注入正是上面定义的dataSource -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+		p:dataSource-ref="dataSource">
+		<!-- mappingResouces属性用来列出全部映射文件 -->
+		<property name="mappingResources">
+			<list>
+				<!-- 以下用来列出Hibernate映射文件 -->
+				<value>org/lwt/tour/model/Account.hbm.xml</value>
+				<value>org/lwt/tour/model/Admin.hbm.xml</value>
+				<value>org/lwt/tour/model/User.hbm.xml</value>
+				<value>org/lwt/tour/model/Country.hbm.xml</value>
+				<value>org/lwt/tour/model/Province.hbm.xml</value>
+				<value>org/lwt/tour/model/City.hbm.xml</value>
+				<value>org/lwt/tour/model/Scenic.hbm.xml</value>
+				<value>org/lwt/tour/model/ScenicClass.hbm.xml</value>
+				<value>org/lwt/tour/model/LineClass.hbm.xml</value>
+				<value>org/lwt/tour/model/Line.hbm.xml</value>
+				<value>org/lwt/tour/model/Order.hbm.xml</value>
+				<value>org/lwt/tour/model/About.hbm.xml</value>
+			</list>
+		</property>
+		<!-- 定义Hibernate的SessionFactory的属性 -->
+		<property name="hibernateProperties">
+			<!-- 指定数据库方言、是否自动建表
+				是否生成SQL语句等 	-->
+			<value>
+			hibernate.dialect=org.hibernate.dialect.MySQLDialect
+			hibernate.hbm2ddl.auto=update
+			hibernate.show_sql=true
+			hibernate.format_sql=true
+			#开启二级缓存
+			hibernate.cache.use_second_level_cache=true
+			#设置二级缓存的提供者
+			hibernate.cache.provider_class=org.hibernate.cache.EhCacheProvider
+			</value>
+		</property>
+	</bean>
+ 
+	<bean id="managerTemplate" abstract="true" lazy-init="true"
+		p:accountDao-ref="accountDao"/>
+
+ 	<bean id="managerTemplate1" abstract="true" lazy-init="true"
+		p:userDao-ref="userDao"/>
+		
+	<bean id="managerTemplate2" abstract="true" lazy-init="true"
+		p:countryDao-ref="countryDao"/>
+		
+	<bean id="managerTemplate3" abstract="true" lazy-init="true"
+		p:provinceDao-ref="provinceDao"/>
+		
+	<bean id="managerTemplate4" abstract="true" lazy-init="true"
+		p:cityDao-ref="cityDao"/>
+		
+	<bean id="managerTemplate5" abstract="true" lazy-init="true"
+		p:scenicClassDao-ref="scenicClassDao"/>			
+		
+	<bean id="managerTemplate6" abstract="true" lazy-init="true"
+		p:adminDao-ref="adminDao"/>
+		
+	<bean id="managerTemplate7" abstract="true" lazy-init="true"
+		p:lineClassDao-ref="lineClassDao"/>	
+		
+	<bean id="managerTemplate8" abstract="true" lazy-init="true"
+		p:scenicDao-ref="scenicDao"/>
+		
+	<bean id="managerTemplate9" abstract="true" lazy-init="true"
+		p:lineDao-ref="lineDao"/>	
+		
+	<bean id="managerTemplate10" abstract="true" lazy-init="true"
+		p:orderDao-ref="orderDao"/>	
+		
+	<bean id="managerTemplate11" abstract="true" lazy-init="true"
+		p:introduceDao-ref="introduceDao"/>			
+
+
+	<bean id="accountMgr"
+		class="org.lwt.tour.service.impl.AccountManager"
+		parent="managerTemplate"/>		
+		
+	<bean id="userMgr"
+		class="org.lwt.tour.service.impl.UserManager"
+		parent="managerTemplate1"/>	
+		
+	<bean id="countryMgr"
+		class="org.lwt.tour.service.impl.CountryManager"
+		parent="managerTemplate2"/>		
+		
+	<bean id="provinceMgr"
+		class="org.lwt.tour.service.impl.ProvinceManager"
+		parent="managerTemplate3"/>		
+		
+	<bean id="cityMgr"
+		class="org.lwt.tour.service.impl.CityManager"
+		parent="managerTemplate4"/>
+				
+	<bean id="scenicClassMgr"
+		class="org.lwt.tour.service.impl.ScenicClassManager"
+		parent="managerTemplate5"/>
+			
+	<bean id="adminMgr"
+		class="org.lwt.tour.service.impl.AdminManager"
+		parent="managerTemplate6"/>	
+		
+	<bean id="lineClassMgr"
+		class="org.lwt.tour.service.impl.LineClassManager"
+		parent="managerTemplate7"/>	
+		
+	<bean id="scenicMgr"
+		class="org.lwt.tour.service.impl.ScenicManager"
+		parent="managerTemplate8"/>
+		
+	<bean id="lineMgr"
+		class="org.lwt.tour.service.impl.LineManager"
+		parent="managerTemplate9"/>			
+
+	<bean id="orderMgr"
+		class="org.lwt.tour.service.impl.OrderManager"
+		parent="managerTemplate10"/>
+		
+	<bean id="introduceMgr"
+		class="org.lwt.tour.service.impl.IntroduceManager"
+		parent="managerTemplate11"/>	
+	 	
+</beans>

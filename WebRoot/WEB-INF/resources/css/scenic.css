@@ -1,0 +1,101 @@
+body{
+  font-family: "microsoft yahei";
+}
+a{
+    color: #999;
+}
+a, a:link {
+    text-decoration: none;
+}
+.defaultDiv{
+  width: 100%;
+  height: 30px;
+}
+.main_top{
+  height: 200px;
+  width:100%;
+  font-size: 14px;
+}
+.top_right{
+  margin-left: 270px;
+}
+.top_left img{
+  width:260px;
+  height: 140px;
+}
+.commit{
+  text-align: center;
+}
+.detail-sub-title {
+    height: 30px;
+    margin-top: 30px;
+    padding-left: 12px;
+    color: #2E9900;
+    font: 400 16px/30px "Microsoft Yahei";
+    background-color: #f8f9f8;
+}
+.detail-sub-title i {
+    float: left;
+    display: inline;
+    height: 15px;
+    width: 4px;
+    margin: 8px 5px 0 0;
+    font-size: 0;
+    line-height: 0;
+    background-color: #8bca70;
+}
+.contract_main {
+    padding: 10px 0px 0 10px;
+    margin: 0 auto;
+    line-height: 20px;
+    color: #666;
+    overflow: hidden;
+    line-height: 26px;
+    font-size: 13px;
+}
+.contract_travel {
+    padding: 10px 0px 0 10px;
+    margin: 0 auto;
+    line-height: 20px;
+    color: #666;
+    overflow: hidden;
+    line-height: 26px;
+    font-size: 13px;
+}
+.contract_security {
+    padding: 10px 0px 0 10px;
+    margin: 0 auto;
+    line-height: 20px;
+    color: #666;
+    overflow: hidden;
+    line-height: 26px;
+    font-size: 13px;
+}
+.imgPanel{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.imgPanel img{
+  max-width: 100%;
+}
+.footer-container{
+  background-color: #EEF4F4;
+  height: 100px;
+  margin-bottom: -40px;
+  margin-top: 50px;
+  text-align: center;
+  border-top: 1px solid #D7E4E4;;
+}
+footer{
+  margin-top: 20px;
+}
+.fl{
+  margin-top: 50px;
+  color: #799D9C;
+  position: absolute;
+  left: 40%;
+}
+.price{
+    color: #E84912;
+    display: inline-block;
+}

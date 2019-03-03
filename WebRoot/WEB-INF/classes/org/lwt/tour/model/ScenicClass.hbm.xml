@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping  package="org.lwt.tour.model">
+	<class name="ScenicClass" table="ScenicClass_info">
+  		<!-- 映射标识属性 -->
+        <id column="sc_id" name="sc_id" type="integer">
+   			 <!-- 指定使用identity主键生成策略 -->
+            <generator class="identity"/>
+        </id>
+ 		 <!-- 映射普通属性 -->
+ 		<property column="sc_name" length="30" name="sc_name" not-null="true" type="string"/>
+ 		<set name="scenics" inverse="true" lazy="false" cascade="all">
+          <key column="scenicClass_id"></key>
+          <one-to-many class="Scenic"/>
+        </set>
+	</class>
+</hibernate-mapping>

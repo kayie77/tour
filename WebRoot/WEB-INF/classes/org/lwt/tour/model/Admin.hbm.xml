@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping  package="org.lwt.tour.model">
+	<class name="Admin" table="Admin_info">
+  		<!-- 映射标识属性 -->
+        <id column="ad_id" name="ad_id" type="integer">
+   			 <!-- 指定使用identity主键生成策略 -->
+            <generator class="identity"/>
+        </id>
+ 		 <!-- 映射普通属性 -->
+ 		<property column="ad_name" length="30" name="ad_name" not-null="true" type="string"/>
+        <property column="password" length="30" name="password" not-null="true" type="string"/>
+	</class>
+</hibernate-mapping>

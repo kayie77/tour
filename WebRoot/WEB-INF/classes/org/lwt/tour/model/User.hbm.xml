@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping  package="org.lwt.tour.model">
+	<class name="User" table="User_info">
+  		<!-- 映射标识属性 -->
+        <id column="u_id" name="u_id" type="integer">
+   			 <!-- 指定使用identity主键生成策略 -->
+            <generator class="identity"/>
+        </id>
+ 		 <!-- 映射普通属性 -->
+ 		<property column="u_name" length="30" name="u_name" not-null="true" type="string"/>
+        <property column="telephone" length="30" name="telephone"  type="string"/>
+        <property column="email" length="30" name="email"  type="string"/>
+        <property column="address" length="30" name="address" type="string"/>
+        <many-to-one name="account" column="account_id" unique="true"  not-null="true"/> 
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 指定Spring配置文件的Schema信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!-- 配置DAO组件的模板 -->
+	<bean id="daoTemplate" abstract="true" lazy-init="true"
+        p:sessionFactory-ref="sessionFactory"/>
+         
+    <bean id="accountDao"
+        class="org.lwt.tour.dao.impl.AccountDaoImpl"
+        parent="daoTemplate"/>   
+        
+    <bean id="userDao"
+        class="org.lwt.tour.dao.impl.UserDaoImpl"
+        parent="daoTemplate"/>   
+        
+    <bean id="adminDao"
+        class="org.lwt.tour.dao.impl.AdminDaoImpl"
+        parent="daoTemplate"/>      
+        
+    <bean id="countryDao"
+        class="org.lwt.tour.dao.impl.CountryDaoImpl"
+        parent="daoTemplate"/>        
+                        
+    <bean id="provinceDao"
+        class="org.lwt.tour.dao.impl.ProvinceDaoImpl"
+        parent="daoTemplate"/>  
+        
+    <bean id="cityDao"
+        class="org.lwt.tour.dao.impl.CityDaoImpl"
+        parent="daoTemplate"/>    
+        
+    <bean id="scenicClassDao"
+        class="org.lwt.tour.dao.impl.ScenicClassDaoImpl"
+        parent="daoTemplate"/> 
+        
+    <bean id="lineClassDao"
+        class="org.lwt.tour.dao.impl.LineClassDaoImpl"
+        parent="daoTemplate"/>
+
+	<bean id="scenicDao"
+        class="org.lwt.tour.dao.impl.ScenicDaoImpl"
+        parent="daoTemplate"/>
+        
+    <bean id="lineDao"
+        class="org.lwt.tour.dao.impl.LineDaoImpl"
+        parent="daoTemplate"/>  
+        
+    <bean id="orderDao"
+        class="org.lwt.tour.dao.impl.OrderDaoImpl"
+        parent="daoTemplate"/>    
+        
+    <bean id="introduceDao"
+        class="org.lwt.tour.dao.impl.IntroduceDaoImpl"
+        parent="daoTemplate"/>                                   
+</beans>

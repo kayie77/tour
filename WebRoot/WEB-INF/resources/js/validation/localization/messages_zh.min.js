@@ -1,0 +1,4 @@
+/*! jQuery Validation Plugin - v1.13.0 - 7/1/2014
+ * http://jqueryvalidation.org/
+ * Copyright (c) 2014 Jörn Zaefferer; Licensed MIT */
+!function(a){"function"==typeof define&&define.amd?define(["jquery","../jquery.validate.min"],a):a(jQuery)}(function(a){a.extend(a.validator.messages,{required:"必填项",remote:"请修正此栏位",email:"无效电子邮件",url:"无效网址",date:"无效日期",dateISO:"无效日期 (YYYY-MM-DD)",number:"无效数字",digits:"无效数字",creditcard:"无效信用卡号码",equalTo:"你的输入不相同",extension:"无效后缀",maxlength:a.validator.format("最多 {0} 个字"),minlength:a.validator.format("最少 {0} 个字"),rangelength:a.validator.format("输入长度为 {0} 至 {1} 之間的字串"),range:a.validator.format("输入 {0} 至 {1} 之间的数值"),max:a.validator.format("不大于 {0} 的数值"),min:a.validator.format("不小于 {0} 的数值")})});

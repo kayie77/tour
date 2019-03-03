@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping  package="org.lwt.tour.model">
+	<class name="Order" table="Order_info">
+  		<!-- 映射标识属性 -->
+        <id column="o_id" name="o_id" type="integer">
+   			 <!-- 指定使用identity主键生成策略 -->
+            <generator class="identity"/>
+        </id>
+ 		 <!-- 映射普通属性 -->
+ 		<property column="spot" length="30" name="spot" type="string"/>
+ 		<property column="type" length="11" name="type" type="integer"/>
+		<many-to-one name="account" column="account_id" not-null="true" lazy="false"/> 
+	</class>
+</hibernate-mapping>

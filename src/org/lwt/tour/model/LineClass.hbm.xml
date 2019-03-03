@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping  package="org.lwt.tour.model">
+	<class name="LineClass" table="LineClass_info">
+  		<!-- 映射标识属性 -->
+        <id column="lc_id" name="lc_id" type="integer">
+   			 <!-- 指定使用identity主键生成策略 -->
+            <generator class="identity"/>
+        </id>
+ 		 <!-- 映射普通属性 -->
+ 		<property column="lc_name" length="30" name="lc_name" not-null="true" type="string"/>
+ 		<set name="lines" inverse="true" lazy="false" cascade="all">
+          <key column="lineClass_id"></key>
+          <one-to-many class="Line"/>
+        </set>
+	</class>
+</hibernate-mapping>

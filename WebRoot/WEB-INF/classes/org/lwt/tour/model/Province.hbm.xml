@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping  package="org.lwt.tour.model">
+	<class name="Province" table="Province_info">
+  		<!-- 映射标识属性 -->
+        <id column="p_id" name="p_id" type="integer">
+   			 <!-- 指定使用identity主键生成策略 -->
+            <generator class="identity"/>
+        </id>
+ 		 <!-- 映射普通属性 -->
+ 		<property column="p_name" length="30" name="p_name" not-null="true" type="string"/>
+ 		<many-to-one name="country" column="country_id" not-null="true" lazy="false"/> 
+ 		<set name="citys" inverse="true" lazy="false" cascade="all">
+          <key column="province_id"></key>
+          <one-to-many class="City"/>
+        </set>
+	</class>
+</hibernate-mapping>
